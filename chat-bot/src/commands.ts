@@ -3,7 +3,7 @@ import robot from "robotjs";
 const moveMouseCmd = async (): Promise<void> => {
   console.log("MOVE MOUSE");
   const { x, y } = robot.getMousePos();
-  robot.moveMouse(x + 30, y - 50);
+  robot.moveMouse(x + 130, y - 200);
 };
 
 const clickMouseCmd = async (): Promise<void> => {
