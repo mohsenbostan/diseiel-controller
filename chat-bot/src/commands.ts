@@ -12,7 +12,7 @@ const moveMouseCmd = async (): Promise<void> => {
 
 const clickMouseCmd = async (): Promise<void> => {
   console.log("CLICK MOUSE");
-  robot.mouseClick();
+  robot.mouseClick("left", true);
 };
 
 const reloadCmd = async (): Promise<void> => {
