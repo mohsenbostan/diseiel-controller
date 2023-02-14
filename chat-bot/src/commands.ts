@@ -40,6 +40,11 @@ const commands: Record<string, Function> = {
   "+reload": reloadCmd,
   "+esc": escCmd,
   "+toggle": toggleMouseCmd,
+  "+squad-exit": () => {
+    escCmd();
+    moveMouseCmd();
+    clickMouseCmd();
+  },
 };
 
 export default commands;
