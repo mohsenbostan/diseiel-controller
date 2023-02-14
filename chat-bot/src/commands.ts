@@ -40,6 +40,11 @@ const muteCmd = async (): Promise<void> => {
   NodeAudioVolumeMixer.muteMaster(true);
 };
 
+const maxAudioCmd = async (): Promise<void> => {
+  console.log("MAX AUDIO");
+  NodeAudioVolumeMixer.setMasterVolumeLevelScalar(1);
+};
+
 const commands: Record<string, Function> = {
   "+mouse": moveMouseCmd,
   "+click": clickMouseCmd,
@@ -52,6 +57,7 @@ const commands: Record<string, Function> = {
     clickMouseCmd();
   },
   "+mute": muteCmd,
+  "+deaf": maxAudioCmd,
 };
 
 export default commands;
