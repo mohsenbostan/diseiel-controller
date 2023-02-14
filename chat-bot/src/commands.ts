@@ -30,6 +30,11 @@ const reloadCmd = async (): Promise<void> => {
   robot.keyTap("r");
 };
 
+const changeGunCmd = async (): Promise<void> => {
+  console.log("CHANGE GUN");
+  robot.keyTap("3");
+};
+
 const escCmd = async (): Promise<void> => {
   console.log("CLICK ESC");
   robot.keyTap("escape");
@@ -58,6 +63,7 @@ const commands: Record<string, Function> = {
   },
   "+mute": muteCmd,
   "+deaf": maxAudioCmd,
+  "+sgun": changeGunCmd,
 };
 
 export default commands;
