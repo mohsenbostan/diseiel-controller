@@ -16,14 +16,20 @@ const clickMouseCmd = async (): Promise<void> => {
 };
 
 const reloadCmd = async (): Promise<void> => {
-  console.log("CLICK MOUSE");
+  console.log("CLICK RELOAD");
   robot.keyTap("r");
+};
+
+const escCmd = async (): Promise<void> => {
+  console.log("CLICK ESC");
+  robot.keyTap("escape");
 };
 
 const commands: Record<string, Function> = {
   "+mouse": moveMouseCmd,
   "+click": clickMouseCmd,
   "+reload": reloadCmd,
+  "+esc": escCmd,
 };
 
 export default commands;
