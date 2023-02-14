@@ -15,6 +15,15 @@ const clickMouseCmd = async (): Promise<void> => {
   robot.mouseClick("left", true);
 };
 
+const toggleMouseCmd = async (): Promise<void> => {
+  console.log("TOGGLE MOUSE");
+  robot.mouseToggle("down");
+
+  setTimeout(function () {
+    robot.mouseToggle("up");
+  }, 800);
+};
+
 const reloadCmd = async (): Promise<void> => {
   console.log("CLICK RELOAD");
   robot.keyTap("r");
@@ -30,6 +39,7 @@ const commands: Record<string, Function> = {
   "+click": clickMouseCmd,
   "+reload": reloadCmd,
   "+esc": escCmd,
+  "+toggle": toggleMouseCmd,
 };
 
 export default commands;
