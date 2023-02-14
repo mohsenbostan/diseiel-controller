@@ -11,9 +11,14 @@ const moveMouseCmd = async (): Promise<void> => {
   robot.moveMouse(x + w / 2, y - 500);
 };
 
-const clickMouseCmd = async (): Promise<void> => {
-  console.log("CLICK MOUSE");
+const leftClickMouseCmd = async (): Promise<void> => {
+  console.log("LEFT CLICK MOUSE");
   robot.mouseClick("left", true);
+};
+
+const rightClickMouseCmd = async (): Promise<void> => {
+  console.log("RIGHT CLICK MOUSE");
+  robot.mouseClick("right", true);
 };
 
 const toggleMouseCmd = async (): Promise<void> => {
@@ -52,14 +57,15 @@ const maxAudioCmd = async (): Promise<void> => {
 
 const commands: Record<string, Function> = {
   "+mouse": moveMouseCmd,
-  "+click": clickMouseCmd,
+  "+lclick": leftClickMouseCmd,
+  "+rclick": rightClickMouseCmd,
   "+reload": reloadCmd,
   "+esc": escCmd,
   "+toggle": toggleMouseCmd,
   "+squad-exit": () => {
     escCmd();
     moveMouseCmd();
-    clickMouseCmd();
+    leftClickMouseCmd();
   },
   "+mute": muteCmd,
   "+deaf": maxAudioCmd,
