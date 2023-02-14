@@ -30,12 +30,17 @@ const toggleMouseCmd = async (): Promise<void> => {
   }, 800);
 };
 
-const reloadCmd = async (): Promise<void> => {
+const gameReloadCmd = async (): Promise<void> => {
   console.log("CLICK RELOAD");
   robot.keyTap("r");
 };
 
-const changeGunCmd = async (): Promise<void> => {
+const gameGun2Cmd = async (): Promise<void> => {
+  console.log("CHANGE GUN");
+  robot.keyTap("2");
+};
+
+const gameGun3Cmd = async (): Promise<void> => {
   console.log("CHANGE GUN");
   robot.keyTap("3");
 };
@@ -56,20 +61,16 @@ const maxAudioCmd = async (): Promise<void> => {
 };
 
 const commands: Record<string, Function> = {
-  "+mouse": moveMouseCmd,
-  "+lclick": leftClickMouseCmd,
-  "+rclick": rightClickMouseCmd,
-  "+reload": reloadCmd,
-  "+esc": escCmd,
-  "+toggle": toggleMouseCmd,
-  "+squad-exit": () => {
-    escCmd();
-    moveMouseCmd();
-    leftClickMouseCmd();
-  },
-  "+mute": muteCmd,
-  "+deaf": maxAudioCmd,
-  "+sgun": changeGunCmd,
+  "+mo-move": moveMouseCmd,
+  "+mo-lclick": leftClickMouseCmd,
+  "+mo-rclick": rightClickMouseCmd,
+  "+mo-toggle": toggleMouseCmd,
+  "+kb-esc": escCmd,
+  "+au-mute": muteCmd,
+  "+au-max": maxAudioCmd,
+  "+ga-gun2": gameGun2Cmd,
+  "+ga-gun3": gameGun3Cmd,
+  "+ga-reload": gameReloadCmd,
 };
 
 export default commands;

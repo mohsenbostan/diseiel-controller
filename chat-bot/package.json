@@ -5,7 +5,8 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "tsup src/main.ts",
-    "start": "node dist/main.js"
+    "start": "node dist/main.js",
+    "pull": "git pull; yarn build; yarn start"
   },
   "keywords": [],
   "author": "",

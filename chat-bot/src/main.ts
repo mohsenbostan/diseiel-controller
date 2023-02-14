@@ -22,7 +22,7 @@ const config = configSchema.parse(process.env);
   console.info("Twitch Bot Connected...");
 
   twitchClient.on("message", async (_channel, tags, message, _self) => {
-    if ((Date.now() - lastUsed) / 1000 >= 0 && (tags.mod || tags.subscriber)) {
+    if ((Date.now() - lastUsed) / 1000 >= 15 && (tags.mod || tags.subscriber)) {
       if (!(message in commands)) return;
 
       lastUsed = Date.now();
