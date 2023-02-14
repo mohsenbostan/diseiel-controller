@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsup src/main.ts",
     "start": "node dist/main.js",
-    "pull": "git pull; yarn build; yarn start"
+    "pull": "git pull ; yarn build ; yarn start"
   },
   "keywords": [],
   "author": "",
