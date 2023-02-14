@@ -683,6 +683,11 @@ node-abi@^2.13.0, node-abi@^2.7.0:
   dependencies:
     semver "^5.4.1"
 
+node-audio-volume-mixer@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/node-audio-volume-mixer/-/node-audio-volume-mixer-1.0.3.tgz#fb09148725258d5c948a9b681f92faee1a358917"
+  integrity sha512-eiKURC47Tygbp0RBw5/OewaiEDzo7L5wfNuEGiEl1LpedPuepMnCzQ6cwQTF103RsO9YjaOXcCT+eQaVnCVZJg==
+
 node-fetch@^2.6.1:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.9.tgz#7c7f744b5cc6eb5fd404e0c7a9fec630a55657e6"

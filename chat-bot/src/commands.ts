@@ -1,3 +1,4 @@
+import { NodeAudioVolumeMixer } from "node-audio-volume-mixer";
 import robot from "robotjs";
 
 const moveMouseCmd = async (): Promise<void> => {
@@ -34,6 +35,11 @@ const escCmd = async (): Promise<void> => {
   robot.keyTap("escape");
 };
 
+const muteCmd = async (): Promise<void> => {
+  console.log("MUTED AUDIO");
+  NodeAudioVolumeMixer.muteMaster(true);
+};
+
 const commands: Record<string, Function> = {
   "+mouse": moveMouseCmd,
   "+click": clickMouseCmd,
@@ -45,6 +51,7 @@ const commands: Record<string, Function> = {
     moveMouseCmd();
     clickMouseCmd();
   },
+  "+mute": muteCmd,
 };
 
 export default commands;
