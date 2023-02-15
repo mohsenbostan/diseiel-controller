@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import tmi from "tmi.js";
 import { z } from "zod";
 import { Command, commandManager } from "./commands";
+import Logger from "./utils/logger";
 
 // Process Config
 dotenv.config();
@@ -21,7 +22,7 @@ const usageMap = new Map<Command, number>();
   });
 
   await twitchClient.connect().catch(console.error);
-  console.info("Twitch Bot Connected...");
+  Logger.info("Twitch Bot Connected...");
 
   twitchClient.on("message", async (channel, tags, message, _self) => {
     if (
