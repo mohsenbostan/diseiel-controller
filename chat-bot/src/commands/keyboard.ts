@@ -1,6 +1,6 @@
 import robot from "robotjs";
 
 export const escCmd = async (): Promise<void> => {
-  console.log("CLICK ESC");
+  console.log("KEYBOARD: ESC");
   robot.keyTap("escape");
 };

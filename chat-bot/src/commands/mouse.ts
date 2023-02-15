@@ -1,7 +1,7 @@
 import robot from "robotjs";
 
 export const moveMouseCmd = async (): Promise<void> => {
-  console.log("MOVE MOUSE");
+  console.log("MOUSE: MOVE CURSOR");
   const { x, y } = robot.getMousePos();
 
   const screenSize = robot.getScreenSize();
@@ -11,17 +11,17 @@ export const moveMouseCmd = async (): Promise<void> => {
 };
 
 export const leftClickMouseCmd = async (): Promise<void> => {
-  console.log("LEFT CLICK MOUSE");
+  console.log("MOUSE: LEFT CLICK");
   robot.mouseClick("left", true);
 };
 
 export const rightClickMouseCmd = async (): Promise<void> => {
-  console.log("RIGHT CLICK MOUSE");
+  console.log("MOUSE: RIGHT CLICK");
   robot.mouseClick("right", true);
 };
 
 export const toggleMouseCmd = async (): Promise<void> => {
-  console.log("TOGGLE MOUSE");
+  console.log("MOUSE: TOGGLED");
   robot.mouseToggle("down");
 
   setTimeout(function () {
