@@ -19,6 +19,6 @@ export const commandManager = {
   "+ga-gun2": gameGun2Cmd,
   "+ga-gun3": gameGun3Cmd,
   "+ga-reload": gameReloadCmd,
-} as const satisfies Record<string, Function>;
+} as const satisfies Record<string, () => void | Promise<void>>;
 
 export type Command = keyof typeof commandManager;

@@ -5,8 +5,7 @@ import { Command, commandManager } from "./commands";
 import Logger from "./utils/logger";
 
 async function main() {
-
-// Process Config
+  // Process Config
   dotenv.config();
 
   const configSchema = z.object({
@@ -25,7 +24,7 @@ async function main() {
   await twitchClient.connect().catch(Logger.error);
   Logger.info("Twitch Bot Connected...");
 
-  twitchClient.on("message", async (channel, tags, message, _self) => {
+  twitchClient.on("message", async (channel, tags, message) => {
     if (
       tags.username === channel.replace("#", "") ||
       tags.mod ||
@@ -37,14 +36,14 @@ async function main() {
 
       if (!usageMap.has(cmd)) usageMap.set(cmd, Date.now() - THROTTLE * 1000);
 
-      const lastUsed = usageMap.get(cmd)!;
+      const lastUsed = usageMap.get(cmd) as number;
 
       if ((Date.now() - lastUsed) / 1000 >= THROTTLE) {
-        await commandManager[cmd]!();
+        await commandManager[cmd]();
         usageMap.set(cmd, Date.now());
       }
     }
   });
-};
+}
 
 main().catch(Logger.error);
