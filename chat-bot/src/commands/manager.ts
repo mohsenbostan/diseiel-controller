@@ -14,6 +14,7 @@ export const commandManager = {
   "+mo-rclick": mouseRightClickCmd,
   "+mo-toggle": mouseToggleCmd,
   "+kb-esc": keyboardEscCmd,
+  "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
   "-au-mute": audioMuteCmd,
   "-au-max": audioMaxCmd,

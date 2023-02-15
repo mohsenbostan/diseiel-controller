@@ -6,6 +6,11 @@ export const keyboardEscCmd = async (): Promise<void> => {
   robot.keyTap("escape");
 };
 
+export const keyboardSpaceCmd = async (): Promise<void> => {
+  Logger.log("KEYBOARD: SPACE");
+  robot.keyTap("space");
+};
+
 export const keyboardAltF4Cmd = async (): Promise<void> => {
   Logger.log("KEYBOARD: ALT+F4");
   robot.keyToggle("alt", "down");
