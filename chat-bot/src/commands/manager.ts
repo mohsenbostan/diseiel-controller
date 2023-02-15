@@ -25,7 +25,7 @@ export const commandManager = {
   "+kb-esc": keyboardEscCmd,
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
-  "au-beep": audioBeepCmd,
+  "+au-beep": audioBeepCmd,
   "-au-mute": audioMuteCmd,
   "-au-max": audioMaxCmd,
   "+ga-prone": gameProneCmd,
