@@ -1,6 +1,6 @@
 import { audioMaxCmd, audioMuteCmd } from "./audio";
 import { gameGun2Cmd, gameGun3Cmd, gameReloadCmd } from "./game";
-import { keyboardAltF4Cmd, keyboardEscCmd } from "./keyboard";
+import { keyboardAltF4Cmd, keyboardEscCmd, keyboardSpaceCmd } from "./keyboard";
 import {
   mouseLeftClickCmd,
   mouseMoveCmd,
