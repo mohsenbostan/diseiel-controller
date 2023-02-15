@@ -4,24 +4,25 @@ import { z } from "zod";
 import { Command, commandManager } from "./commands";
 import Logger from "./utils/logger";
 
+async function main() {
+
 // Process Config
-dotenv.config();
+  dotenv.config();
 
-const configSchema = z.object({
-  TWITCH_CHANNELS: z.string(),
-});
-const config = configSchema.parse(process.env);
-const THROTTLE = 15;
+  const configSchema = z.object({
+    TWITCH_CHANNELS: z.string(),
+  });
+  const config = configSchema.parse(process.env);
+  const THROTTLE = 15;
 
-// State
-const usageMap = new Map<Command, number>();
+  // State
+  const usageMap = new Map<Command, number>();
 
-(async () => {
   const twitchClient = new tmi.Client({
     channels: config.TWITCH_CHANNELS.split(","),
   });
 
-  await twitchClient.connect().catch(console.error);
+  await twitchClient.connect().catch(Logger.error);
   Logger.info("Twitch Bot Connected...");
 
   twitchClient.on("message", async (channel, tags, message, _self) => {
@@ -43,4 +44,6 @@ const usageMap = new Map<Command, number>();
       }
     }
   });
-})();
+};
+
+main().catch(Logger.error);
