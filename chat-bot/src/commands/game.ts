@@ -6,6 +6,11 @@ export const gameReloadCmd = async (): Promise<void> => {
   robot.keyTap("r");
 };
 
+export const gameProneCmd = async (): Promise<void> => {
+  Logger.log("GAME: PRONE");
+  robot.keyTap("z");
+};
+
 export const gameGun2Cmd = async (): Promise<void> => {
   Logger.log("GAME: SWITCH TO GUN 2");
   robot.keyTap("2");

@@ -1,5 +1,10 @@
 import { audioMaxCmd, audioMuteCmd } from "~/commands/audio";
-import { gameGun2Cmd, gameGun3Cmd, gameReloadCmd } from "~/commands/game";
+import {
+  gameGun2Cmd,
+  gameGun3Cmd,
+  gameProneCmd,
+  gameReloadCmd,
+} from "~/commands/game";
 import {
   keyboardAltF4Cmd,
   keyboardEscCmd,
@@ -22,6 +27,7 @@ export const commandManager = {
   "-kb-altf4": keyboardAltF4Cmd,
   "-au-mute": audioMuteCmd,
   "-au-max": audioMaxCmd,
+  "+ga-prone": gameProneCmd,
   "+ga-gun2": gameGun2Cmd,
   "+ga-gun3": gameGun3Cmd,
   "+ga-reload": gameReloadCmd,
