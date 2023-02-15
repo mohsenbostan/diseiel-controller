@@ -3,7 +3,7 @@ import Logger from "~/utils/logger";
 
 export const audioBeepCmd = async (): Promise<void> => {
   Logger.log("AUDIO: BEEP");
-  process.stderr.on("\007");
+  process.stdout.write("\x07");
 };
 
 export const audioMuteCmd = async (): Promise<void> => {
