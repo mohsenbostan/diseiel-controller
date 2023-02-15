@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsup src/main.ts",
     "start": "node dist/main.js",
-    "pull": "git pull && yarn build && yarn start",
+    "pull": "git pull && yarn && yarn build && yarn start",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
   },
