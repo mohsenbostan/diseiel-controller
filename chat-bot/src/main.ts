@@ -1,7 +1,9 @@
+import { StaticAuthProvider } from "@twurple/auth";
+import { PubSubClient } from "@twurple/pubsub";
 import * as dotenv from "dotenv";
 import tmi from "tmi.js";
 import { z } from "zod";
-import { Command, commandManager } from "./commands";
+import { Command, commandManager, isChannelPoint } from "./commands";
 import Logger from "./utils/logger";
 
 async function main() {
@@ -10,6 +12,9 @@ async function main() {
 
   const configSchema = z.object({
     TWITCH_CHANNELS: z.string(),
+    TWITCH_CLIENT_ID: z.string(),
+    TWITCH_ACCESS: z.string(),
+    TWITCH_USER_ID: z.string(),
   });
   const config = configSchema.parse(process.env);
   const THROTTLE = 15;
@@ -31,6 +36,7 @@ async function main() {
       tags.subscriber
     ) {
       if (!(message in commandManager)) return;
+      if (isChannelPoint(message)) return;
 
       const cmd = message as Command;
 
@@ -42,6 +48,31 @@ async function main() {
         await commandManager[cmd]();
         usageMap.set(cmd, Date.now());
       }
+    }
+  });
+
+  // Channel Redemptions
+  const authProvider = new StaticAuthProvider(
+    config.TWITCH_CLIENT_ID,
+    config.TWITCH_ACCESS,
+  );
+
+  const pubSubClient = new PubSubClient();
+  await pubSubClient.registerUserListener(authProvider);
+
+  await pubSubClient.onRedemption(config.TWITCH_USER_ID, async (message) => {
+    const title = message.rewardTitle.toLowerCase();
+
+    if (title === "ctrl: max audio") {
+      await commandManager["-au-max"]();
+    }
+
+    if (title === "ctrl: mute audio") {
+      await commandManager["-au-mute"]();
+    }
+
+    if (title === "ctrl: exit") {
+      await commandManager["-kb-altf4"]();
     }
   });
 }

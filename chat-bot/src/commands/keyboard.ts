@@ -5,3 +5,13 @@ export const keyboardEscCmd = async (): Promise<void> => {
   Logger.log("KEYBOARD: ESC");
   robot.keyTap("escape");
 };
+
+export const keyboardAltF4Cmd = async (): Promise<void> => {
+  Logger.log("KEYBOARD: ALT+F4");
+  robot.keyToggle("alt", "down");
+  robot.keyTap("f4");
+
+  setTimeout(() => {
+    robot.keyToggle("alt", "up");
+  }, 200);
+};
