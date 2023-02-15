@@ -1,7 +1,8 @@
 import robot from "robotjs";
+import Logger from "src/utils/logger";
 
-export const moveMouseCmd = async (): Promise<void> => {
-  console.log("MOUSE: MOVE CURSOR");
+export const mouseMoveCmd = async (): Promise<void> => {
+  Logger.log("MOUSE: MOVE CURSOR");
   const { x, y } = robot.getMousePos();
 
   const screenSize = robot.getScreenSize();
@@ -10,18 +11,18 @@ export const moveMouseCmd = async (): Promise<void> => {
   robot.moveMouse(x + w / 2, y - 500);
 };
 
-export const leftClickMouseCmd = async (): Promise<void> => {
-  console.log("MOUSE: LEFT CLICK");
+export const mouseLeftClickCmd = async (): Promise<void> => {
+  Logger.log("MOUSE: LEFT CLICK");
   robot.mouseClick("left", true);
 };
 
-export const rightClickMouseCmd = async (): Promise<void> => {
-  console.log("MOUSE: RIGHT CLICK");
+export const mouseRightClickCmd = async (): Promise<void> => {
+  Logger.log("MOUSE: RIGHT CLICK");
   robot.mouseClick("right", true);
 };
 
-export const toggleMouseCmd = async (): Promise<void> => {
-  console.log("MOUSE: TOGGLED");
+export const mouseToggleCmd = async (): Promise<void> => {
+  Logger.log("MOUSE: TOGGLED");
   robot.mouseToggle("down");
 
   setTimeout(function () {

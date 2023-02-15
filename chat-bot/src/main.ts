@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 import tmi from "tmi.js";
 import { z } from "zod";
-import { commandManager } from "./commands";
+import { Command, commandManager } from "./commands";
 
 // Process Config
 dotenv.config();
@@ -9,11 +9,13 @@ dotenv.config();
 const configSchema = z.object({
   TWITCH_CHANNELS: z.string(),
 });
-
 const config = configSchema.parse(process.env);
+const THROTTLE = 15;
+
+// State
+const usageMap = new Map<Command, number>();
 
 (async () => {
-  let lastUsed = Date.now();
   const twitchClient = new tmi.Client({
     channels: config.TWITCH_CHANNELS.split(","),
   });
@@ -23,15 +25,21 @@ const config = configSchema.parse(process.env);
 
   twitchClient.on("message", async (channel, tags, message, _self) => {
     if (
-      (Date.now() - lastUsed) / 1000 >= 15 &&
-      (tags.username === channel.replace("#", "") ||
-        tags.mod ||
-        tags.subscriber)
+      tags.username === channel.replace("#", "") ||
+      tags.mod ||
+      tags.subscriber
     ) {
       if (!(message in commandManager)) return;
 
-      lastUsed = Date.now();
-      await commandManager[message]!();
+      const cmd = message as Command;
+
+      if (!usageMap.has(cmd)) usageMap.set(cmd, Date.now() - THROTTLE * 1000);
+
+      const lastUsed = usageMap.get(cmd) || Date.now() - THROTTLE * 1000;
+
+      if ((Date.now() - lastUsed) / 1000 >= THROTTLE) {
+        await commandManager[cmd]!();
+      }
     }
   });
 })();

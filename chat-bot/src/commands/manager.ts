@@ -1,22 +1,24 @@
-import { maxAudioCmd, muteAudioCmd } from "./audio";
+import { audioMaxCmd, audioMuteCmd } from "./audio";
 import { gameGun2Cmd, gameGun3Cmd, gameReloadCmd } from "./game";
-import { escCmd } from "./keyboard";
+import { keyboardEscCmd } from "./keyboard";
 import {
-  leftClickMouseCmd,
-  moveMouseCmd,
-  rightClickMouseCmd,
-  toggleMouseCmd,
+  mouseLeftClickCmd,
+  mouseMoveCmd,
+  mouseRightClickCmd,
+  mouseToggleCmd,
 } from "./mouse";
 
-export const commandManager: Record<string, Function> = {
-  "+mo-move": moveMouseCmd,
-  "+mo-lclick": leftClickMouseCmd,
-  "+mo-rclick": rightClickMouseCmd,
-  "+mo-toggle": toggleMouseCmd,
-  "+kb-esc": escCmd,
-  "+au-mute": muteAudioCmd,
-  "+au-max": maxAudioCmd,
+export const commandManager = {
+  "+mo-move": mouseMoveCmd,
+  "+mo-lclick": mouseLeftClickCmd,
+  "+mo-rclick": mouseRightClickCmd,
+  "+mo-toggle": mouseToggleCmd,
+  "+kb-esc": keyboardEscCmd,
+  "+au-mute": audioMuteCmd,
+  "+au-max": audioMaxCmd,
   "+ga-gun2": gameGun2Cmd,
   "+ga-gun3": gameGun3Cmd,
   "+ga-reload": gameReloadCmd,
-};
+} as const satisfies Record<string, Function>;
+
+export type Command = keyof typeof commandManager;
