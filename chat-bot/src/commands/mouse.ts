@@ -1,5 +1,5 @@
 import robot from "robotjs";
-import Logger from "src/utils/logger";
+import Logger from "~/utils/logger";
 
 export const mouseMoveCmd = async (): Promise<void> => {
   Logger.log("MOUSE: MOVE CURSOR");

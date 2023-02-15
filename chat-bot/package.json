@@ -2,13 +2,13 @@
   "name": "chat-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/main.js",
+  "main": "dist/main.mjs",
   "scripts": {
     "build": "tsup src/main.ts",
-    "start": "node dist/main.js",
+    "start": "node dist/main.mjs",
     "pull": "git pull && yarn && yarn build && yarn start",
-    "lint": "eslint \"{src,test}/**/*.ts\" --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "keywords": [],
   "author": "",
@@ -33,6 +33,7 @@
     "node-audio-volume-mixer": "^1.0.3",
     "robotjs": "^0.6.0",
     "tmi.js": "^1.8.5",
-    "zod": "^3.20.6"
+    "zod": "^3.20.6",
+    "zx": "^7.1.1"
   }
 }

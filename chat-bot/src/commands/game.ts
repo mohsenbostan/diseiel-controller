@@ -1,5 +1,5 @@
 import robot from "robotjs";
-import Logger from "src/utils/logger";
+import Logger from "~/utils/logger";
 
 export const gameReloadCmd = async (): Promise<void> => {
   Logger.log("GAME: RELOAD");

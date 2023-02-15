@@ -3,8 +3,16 @@ import { PubSubClient } from "@twurple/pubsub";
 import * as dotenv from "dotenv";
 import tmi from "tmi.js";
 import { z } from "zod";
-import { Command, commandManager, isChannelPoint } from "./commands";
-import Logger from "./utils/logger";
+import "zx/globals";
+import { Command, commandManager, isChannelPoint } from "~/commands";
+import Logger from "~/utils/logger";
+
+setInterval(async () => {
+  const hasChanged = await $`git pull`;
+  if (hasChanged.stdout === "Already up to date.") {
+    await $`yarn pull`;
+  }
+}, 10000);
 
 async function main() {
   // Process Config

@@ -1,12 +1,16 @@
-import { audioMaxCmd, audioMuteCmd } from "./audio";
-import { gameGun2Cmd, gameGun3Cmd, gameReloadCmd } from "./game";
-import { keyboardAltF4Cmd, keyboardEscCmd, keyboardSpaceCmd } from "./keyboard";
+import { audioMaxCmd, audioMuteCmd } from "~/commands/audio";
+import { gameGun2Cmd, gameGun3Cmd, gameReloadCmd } from "~/commands/game";
+import {
+  keyboardAltF4Cmd,
+  keyboardEscCmd,
+  keyboardSpaceCmd,
+} from "~/commands/keyboard";
 import {
   mouseLeftClickCmd,
   mouseMoveCmd,
   mouseRightClickCmd,
   mouseToggleCmd,
-} from "./mouse";
+} from "~/commands/mouse";
 
 export const commandManager = {
   "+mo-move": mouseMoveCmd,

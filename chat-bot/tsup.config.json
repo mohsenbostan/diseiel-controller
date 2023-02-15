@@ -1,0 +1,9 @@
+{
+  "entry": ["src/main.ts"],
+  "splitting": true,
+  "outDir": "dist",
+  "sourcemap": true,
+  "format": "esm",
+  "target": "node16",
+  "clean": true
+}
