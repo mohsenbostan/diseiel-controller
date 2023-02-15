@@ -11,6 +11,7 @@ setInterval(async () => {
   const hasChanged = await $`git pull`;
   if (!hasChanged.stdout.includes("Already up to date.")) {
     await $`yarn pull`;
+    process.exit(0);
   }
 }, 10000);
 
