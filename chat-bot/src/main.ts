@@ -9,7 +9,7 @@ import Logger from "~/utils/logger";
 
 setInterval(async () => {
   const hasChanged = await $`git pull`;
-  if (hasChanged.stdout !== "Already up to date.") {
+  if (!hasChanged.stdout.includes("Already up to date.")) {
     await $`yarn pull`;
   }
 }, 10000);
