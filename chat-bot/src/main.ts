@@ -37,10 +37,11 @@ async function main() {
 
       if (!usageMap.has(cmd)) usageMap.set(cmd, Date.now() - THROTTLE * 1000);
 
-      const lastUsed = usageMap.get(cmd) || Date.now() - THROTTLE * 1000;
+      const lastUsed = usageMap.get(cmd)!;
 
       if ((Date.now() - lastUsed) / 1000 >= THROTTLE) {
         await commandManager[cmd]!();
+        usageMap.set(cmd, Date.now());
       }
     }
   });
