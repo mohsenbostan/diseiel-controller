@@ -23,7 +23,7 @@ export const commandManager = {
   "+ga-reload": gameReloadCmd,
 } as const satisfies Record<string, () => void | Promise<void>>;
 
-export type ChannelPointCommand = `-{string}`;
+export type ChannelPointCommand = `-${string}`;
 export type Command = Exclude<keyof typeof commandManager, ChannelPointCommand>;
 
 export const isChannelPoint = (cmd: string) => cmd.charAt(0) === "-";
