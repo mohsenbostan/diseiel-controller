@@ -83,6 +83,10 @@ async function main() {
     if (title === "ctrl: exit") {
       await commandManager["-kb-altf4"]();
     }
+
+    if (title === "ctrl: logout pc") {
+      await commandManager["-sy-logout"]();
+    }
   });
 }
 

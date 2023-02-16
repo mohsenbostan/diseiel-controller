@@ -17,6 +17,7 @@ import {
   mouseRightClickCmd,
   mouseToggleCmd,
 } from "~/commands/mouse";
+import { systemLogoutCmd } from "./system";
 
 export const commandManager = {
   "+mo-move": mouseMoveCmd,
@@ -33,6 +34,7 @@ export const commandManager = {
   "+ga-gun2": gameGun2Cmd,
   "+ga-gun3": gameGun3Cmd,
   "+ga-reload": gameReloadCmd,
+  "-sy-logout": systemLogoutCmd,
 } as const satisfies Record<string, () => void | Promise<void>>;
 
 export type ChannelPointCommand = `-${string}`;
