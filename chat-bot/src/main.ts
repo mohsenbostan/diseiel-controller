@@ -26,7 +26,6 @@ async function main() {
     TWITCH_USER_ID: z.string(),
   });
   const config = configSchema.parse(process.env);
-  const THROTTLE = 15;
 
   // State
   const usageMap = new Map<Command, number>();
@@ -47,6 +46,7 @@ async function main() {
       if (!(message in commandManager)) return;
       if (isChannelPoint(message)) return;
 
+      const THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 15;
       const cmd = message as Command;
 
       if (!usageMap.has(cmd)) usageMap.set(cmd, Date.now() - THROTTLE * 1000);
