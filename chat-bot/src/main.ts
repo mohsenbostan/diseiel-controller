@@ -28,7 +28,7 @@ async function main() {
   const config = configSchema.parse(process.env);
 
   // State
-  const usageMap = new Map<Command, number>();
+  const usageMap = new Map<string, number>();
 
   const twitchClient = new tmi.Client({
     channels: config.TWITCH_CHANNELS.split(","),
@@ -43,10 +43,31 @@ async function main() {
       tags.mod ||
       tags.subscriber
     ) {
-      if (!(message in commandManager)) return;
       if (isChannelPoint(message)) return;
 
       const THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 15;
+
+      const cmdChain = message.split("|");
+      if (cmdChain.length > 0) {
+        await Promise.all(
+          cmdChain.map(async (cmd) => {
+            cmd = cmd.trim();
+
+            if (!usageMap.has(cmd))
+              usageMap.set(cmd, Date.now() - THROTTLE * 1000);
+
+            const lastUsed = usageMap.get(cmd) as number;
+
+            if ((Date.now() - lastUsed) / 1000 >= THROTTLE) {
+              await commandManager[cmd as Command]();
+              usageMap.set(cmd, Date.now());
+            }
+          }),
+        );
+        return;
+      }
+      if (!(message in commandManager)) return;
+
       const cmd = message as Command;
 
       if (!usageMap.has(cmd)) usageMap.set(cmd, Date.now() - THROTTLE * 1000);
