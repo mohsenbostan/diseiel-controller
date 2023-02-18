@@ -47,7 +47,7 @@ async function main() {
 
       const THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 15;
 
-      const cmdChain = message.split("|");
+      const cmdChain = message.split("|").slice(0, 4);
       if (cmdChain.length > 0) {
         await Promise.all(
           cmdChain.map(async (cmd) => {
