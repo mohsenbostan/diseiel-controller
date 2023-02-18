@@ -11,6 +11,13 @@ export const gameProneCmd = async (): Promise<void> => {
   robot.keyTap("z");
 };
 
+export const gameTabCmd = async (): Promise<void> => {
+  Logger.log("GAME: TAB");
+  robot.keyToggle("tab", "down");
+
+  setTimeout(() => robot.keyToggle("tab", "up"), 1500);
+};
+
 export const gameMapCmd = async (): Promise<void> => {
   Logger.log("GAME: MAP");
   robot.keyTap("m");
