@@ -11,6 +11,7 @@ import {
   keyboardAltF4Cmd,
   keyboardEscCmd,
   keyboardFCmd,
+  keyboardGCmd,
   keyboardSpaceCmd,
 } from "~/commands/keyboard";
 import {
@@ -28,6 +29,7 @@ export const commandManager = {
   "+mo-toggle": mouseToggleCmd,
   "+kb-esc": keyboardEscCmd,
   "+kb-f": keyboardFCmd,
+  "+kb-g": keyboardGCmd,
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
   "-au-mute": audioMuteCmd,
