@@ -9,6 +9,7 @@ import {
 } from "~/commands/game";
 import {
   keyboardAltF4Cmd,
+  keyboardECmd,
   keyboardEscCmd,
   keyboardFCmd,
   keyboardGCmd,
@@ -29,6 +30,7 @@ export const commandManager = {
   "+mo-toggle": mouseToggleCmd,
   "+kb-esc": keyboardEscCmd,
   "+kb-f": keyboardFCmd,
+  "+kb-e": keyboardECmd,
   "+kb-g": keyboardGCmd,
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
