@@ -53,6 +53,8 @@ async function main() {
           cmdChain.map(async (cmd) => {
             cmd = cmd.trim();
 
+            if (!(cmd in commandManager)) return;
+
             if (!usageMap.has(cmd))
               usageMap.set(cmd, Date.now() - THROTTLE * 1000);
 
