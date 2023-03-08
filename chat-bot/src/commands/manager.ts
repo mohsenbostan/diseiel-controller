@@ -10,6 +10,7 @@ import {
 import {
   keyboardAltCmd,
   keyboardAltF4Cmd,
+  keyboardCCmd,
   keyboardECmd,
   keyboardEscCmd,
   keyboardFCmd,
@@ -36,6 +37,7 @@ export const commandManager = {
   "+kb-f": keyboardFCmd,
   "+kb-e": keyboardECmd,
   "+kb-x": keyboardXCmd,
+  "+kb-c": keyboardCCmd,
   "+kb-q": keyboardQCmd,
   "+kb-y": keyboardYCmd,
   "+kb-g": keyboardGCmd,
