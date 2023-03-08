@@ -3,8 +3,6 @@ import robot from "robotjs";
 import Logger from "~/utils/logger";
 
 export const systemTaskManagerCmd = async (): Promise<void> => {
-  // #DISABLED
-  return;
   Logger.log("KEYBOARD: TASK MANAGER");
   robot.keyToggle("control", "down");
   robot.keyToggle("shift", "down");
