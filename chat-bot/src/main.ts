@@ -32,6 +32,7 @@ async function main() {
 
   // State
   const usageMap = new Map<string, number>();
+  const strictCommands: Command[] = ["+kb-alt"];
 
   const twitchClient = new tmi.Client({
     channels: config.TWITCH_CHANNELS.split(","),
@@ -48,7 +49,7 @@ async function main() {
     ) {
       if (isChannelPoint(message)) return;
 
-      const THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 35;
+      let THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 35;
 
       const cmdChain = message.split("|").slice(0, 4);
       if (cmdChain.length > 0) {
@@ -57,6 +58,10 @@ async function main() {
             cmd = cmd.trim();
 
             if (!(cmd in commandManager)) return;
+
+            if (strictCommands.includes(cmd as Command)) {
+              THROTTLE += 15;
+            }
 
             if (!usageMap.has(cmd))
               usageMap.set(cmd, Date.now() - THROTTLE * 1000);
@@ -74,6 +79,9 @@ async function main() {
       if (!(message in commandManager)) return;
 
       const cmd = message as Command;
+      if (strictCommands.includes(cmd)) {
+        THROTTLE += 15;
+      }
 
       if (!usageMap.has(cmd)) usageMap.set(cmd, Date.now() - THROTTLE * 1000);
 
