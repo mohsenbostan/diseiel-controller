@@ -13,6 +13,7 @@ import {
   keyboardEscCmd,
   keyboardFCmd,
   keyboardGCmd,
+  keyboardQCmd,
   keyboardSpaceCmd,
 } from "~/commands/keyboard";
 import {
@@ -31,6 +32,7 @@ export const commandManager = {
   "+kb-esc": keyboardEscCmd,
   "+kb-f": keyboardFCmd,
   "+kb-e": keyboardECmd,
+  "+kb-q": keyboardQCmd,
   "+kb-g": keyboardGCmd,
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
