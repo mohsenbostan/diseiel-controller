@@ -48,7 +48,7 @@ async function main() {
     ) {
       if (isChannelPoint(message)) return;
 
-      const THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 20;
+      const THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 35;
 
       const cmdChain = message.split("|").slice(0, 4);
       if (cmdChain.length > 0) {
