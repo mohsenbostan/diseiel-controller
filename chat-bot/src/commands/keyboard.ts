@@ -36,6 +36,15 @@ export const keyboardGCmd = async (): Promise<void> => {
   robot.keyTap("g");
 };
 
+export const keyboardAltCmd = async (): Promise<void> => {
+  Logger.log("KEYBOARD: ALT");
+  robot.keyToggle("alt", "down");
+
+  setTimeout(() => {
+    robot.keyToggle("alt", "up");
+  }, 400);
+};
+
 export const keyboardAltF4Cmd = async (): Promise<void> => {
   Logger.log("KEYBOARD: ALT+F4");
   robot.keyToggle("alt", "down");

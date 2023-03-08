@@ -8,6 +8,7 @@ import {
   gameTabCmd,
 } from "~/commands/game";
 import {
+  keyboardAltCmd,
   keyboardAltF4Cmd,
   keyboardECmd,
   keyboardEscCmd,
@@ -38,6 +39,7 @@ export const commandManager = {
   "+kb-g": keyboardGCmd,
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
+  "-kb-alt": keyboardAltCmd,
   "-au-mute": audioMuteCmd,
   "-au-max": audioMaxCmd,
   "+ga-map": gameMapCmd,
