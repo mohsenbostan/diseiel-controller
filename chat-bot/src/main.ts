@@ -19,6 +19,9 @@ async function main() {
   // Process Config
   dotenv.config();
 
+  Logger.info("Docs: https://diseiel-controller.vercel.app");
+  Logger.info("Support [Discord]: HomelessDev#0001");
+
   const configSchema = z.object({
     TWITCH_CHANNELS: z.string(),
     TWITCH_CLIENT_ID: z.string(),
@@ -36,7 +39,6 @@ async function main() {
 
   await twitchClient.connect().catch(Logger.error);
   Logger.info("Twitch Bot Connected...");
-  Logger.info("Support [Discord]: HomelessDev#0001");
 
   twitchClient.on("message", async (channel, tags, message) => {
     if (
