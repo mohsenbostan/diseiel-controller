@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diseiel Chat Bot | Documents</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  </head>
+
+  <body class="bg-zinc-800">
+    <div class="px-6 py-8 w-[50%]">
+      <article
+        id="content"
+        class="prose prose-zinc max-w-full text-zinc-50 prose-p:text-justify prose-a:text-yellow-400 prose-a:no-underline dark:prose-invert"
+      ></article>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      document.getElementById("content").innerHTML = marked.parse(
+        `
+## Requirements 
+
+- Node.js +16
+- Yarn
+- Windows
+
+## Installation
+
+1. clone the repo
+
+\`\`\`bash
+git clone https://github.com/mohsenbostan/diseiel-controller
+\`\`\`
+
+2. create a **.env** file based on **.env.example** and replace the required data
+3. run this command in the \`chat-bot\` directory:
+
+\`\`\`bash
+yarn pull
+\`\`\`
+`,
+      );
+    </script>
+  </body>
+</html>
