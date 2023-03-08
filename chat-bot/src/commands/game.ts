@@ -23,6 +23,11 @@ export const gameMapCmd = async (): Promise<void> => {
   robot.keyTap("m");
 };
 
+export const gameGun1Cmd = async (): Promise<void> => {
+  Logger.log("GAME: SWITCH TO GUN 1");
+  robot.keyTap("1");
+};
+
 export const gameGun2Cmd = async (): Promise<void> => {
   Logger.log("GAME: SWITCH TO GUN 2");
   robot.keyTap("2");
