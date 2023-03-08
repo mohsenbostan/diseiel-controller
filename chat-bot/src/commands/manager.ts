@@ -17,6 +17,7 @@ import {
   keyboardQCmd,
   keyboardSpaceCmd,
   keyboardXCmd,
+  keyboardYCmd,
 } from "~/commands/keyboard";
 import {
   mouseLeftClickCmd,
@@ -36,6 +37,7 @@ export const commandManager = {
   "+kb-e": keyboardECmd,
   "+kb-x": keyboardXCmd,
   "+kb-q": keyboardQCmd,
+  "+kb-y": keyboardYCmd,
   "+kb-g": keyboardGCmd,
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
