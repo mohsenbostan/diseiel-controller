@@ -1,4 +1,4 @@
-import { audioMaxCmd, audioMuteCmd } from "~/commands/audio";
+import { audioMaxCmd, audioMuteCmd, audioTrollCmd } from "~/commands/audio";
 import {
   gameChatCmd,
   gameGun1Cmd,
@@ -46,6 +46,7 @@ export const commandManager = {
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
   "+kb-alt": keyboardAltCmd,
+  "+au-troll": audioTrollCmd,
   "-au-mute": audioMuteCmd,
   "-au-max": audioMaxCmd,
   "+ga-map": gameMapCmd,

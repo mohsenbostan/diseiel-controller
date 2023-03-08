@@ -32,7 +32,12 @@ async function main() {
 
   // State
   const usageMap = new Map<string, number>();
-  const strictCommands: Command[] = ["+kb-alt", "+ga-chat", "+sy-task"];
+  const strictCommands: Command[] = [
+    "+kb-alt",
+    "+ga-chat",
+    "+sy-task",
+    "+au-troll",
+  ];
 
   const twitchClient = new tmi.Client({
     channels: config.TWITCH_CHANNELS.split(","),
