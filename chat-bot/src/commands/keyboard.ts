@@ -16,6 +16,11 @@ export const keyboardFCmd = async (): Promise<void> => {
   robot.keyTap("f");
 };
 
+export const keyboardXCmd = async (): Promise<void> => {
+  Logger.log("KEYBOARD: X");
+  robot.keyTap("x");
+};
+
 export const keyboardQCmd = async (): Promise<void> => {
   Logger.log("KEYBOARD: Q");
   robot.keyTap("q");
