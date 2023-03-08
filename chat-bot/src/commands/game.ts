@@ -12,7 +12,7 @@ export const gameChatCmd = async (): Promise<void> => {
   robot.keyTap("enter");
   robot.keyToggle("shift", "up");
 
-  robot.typeString("nt :)");
+  robot.typeStringDelayed("nt", 450);
 
   robot.keyTap("enter");
 };
