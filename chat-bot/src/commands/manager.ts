@@ -39,7 +39,7 @@ export const commandManager = {
   "+kb-g": keyboardGCmd,
   "+kb-space": keyboardSpaceCmd,
   "-kb-altf4": keyboardAltF4Cmd,
-  "-kb-alt": keyboardAltCmd,
+  "+kb-alt": keyboardAltCmd,
   "-au-mute": audioMuteCmd,
   "-au-max": audioMaxCmd,
   "+ga-map": gameMapCmd,
