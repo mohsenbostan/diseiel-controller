@@ -10,12 +10,11 @@ export const gameChatCmd = async (): Promise<void> => {
   Logger.log("GAME: CHAT");
   robot.keyToggle("shift", "down");
   robot.keyTap("enter");
-  setTimeout(() => robot.keyToggle("shift", "up"), 1);
+  robot.keyToggle("shift", "up");
 
-  setTimeout(() => {
-    robot.typeString("nt :)");
-    robot.keyTap("enter");
-  }, 1);
+  robot.typeString("nt :)");
+
+  robot.keyTap("enter");
 };
 
 export const gameProneCmd = async (): Promise<void> => {
