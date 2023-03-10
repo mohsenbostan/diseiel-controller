@@ -6,6 +6,7 @@ import { z } from "zod";
 import "zx/globals";
 import { Command, commandManager, isChannelPoint } from "~/commands";
 import Logger from "~/utils/logger";
+import { addAlias, getAlias } from "./db";
 
 setInterval(async () => {
   const hasChanged = await $`git pull`;
@@ -49,14 +50,47 @@ async function main() {
     ) {
       if (isChannelPoint(message)) return;
 
+      if (tags.mod && message.indexOf("#add-als") === 0) {
+        const addAliasMessage = message.split(" ").filter(Boolean);
+        addAliasMessage.shift();
+        const alias = addAliasMessage[0]
+          ?.split("|")
+          .filter(Boolean)
+          .map((x) => x.trim());
+
+        if (alias && alias.length > 1) {
+          const name = alias.shift() as string;
+          if (
+            name.charAt(0) === "#" &&
+            name !== "#add-als" &&
+            name.charAt(1) === channel.charAt(1) &&
+            alias.length <= 4
+          ) {
+            await addAlias({
+              channel,
+              name,
+              combo: alias as Command[],
+            });
+          }
+        }
+      }
+
       let THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 35;
 
-      const cmdChain = message.split("|").slice(0, 4);
-      if (cmdChain.length > 0) {
+      let cmdChain: Command[] | undefined = [];
+
+      if (message.charAt(0) === "#") {
+        cmdChain = await getAlias(message, channel);
+      } else {
+        cmdChain = message
+          .split("|")
+          .slice(0, 4)
+          .map((x) => x.trim()) as Command[];
+      }
+
+      if (cmdChain && cmdChain.length > 0) {
         await Promise.all(
           cmdChain.map(async (cmd) => {
-            cmd = cmd.trim();
-
             if (!(cmd in commandManager)) return;
 
             if (strictCommands.includes(cmd as Command)) {
