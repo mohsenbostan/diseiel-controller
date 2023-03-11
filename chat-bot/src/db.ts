@@ -26,7 +26,9 @@ export async function getAlias(
   name: string,
   channel: string,
 ): Promise<Command[] | undefined> {
-  if (!(await fs.stat("db")).isFile) {
+  try {
+    await fs.stat("db");
+  } catch (err) {
     await fs.writeFile("db", "");
   }
 
