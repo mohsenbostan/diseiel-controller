@@ -26,6 +26,10 @@ export async function getAlias(
   name: string,
   channel: string,
 ): Promise<Command[] | undefined> {
+  if (!(await fs.stat("db")).isFile) {
+    await fs.writeFile("db", "");
+  }
+
   const data = (
     await fs.readFile("db", {
       encoding: "utf-8",
