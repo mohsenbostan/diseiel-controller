@@ -33,7 +33,7 @@ async function main() {
 
   // State
   const usageMap = new Map<string, number>();
-  const strictCommands: Command[] = ["+kb-alt", "+ga-chat", "+au-troll"];
+  const strictedCommands: Command[] = ["+kb-alt", "+ga-chat", "+au-troll"];
 
   const twitchClient = new tmi.Client({
     channels: config.TWITCH_CHANNELS.split(","),
@@ -93,7 +93,7 @@ async function main() {
           cmdChain.map(async (cmd) => {
             if (!(cmd in commandManager)) return;
 
-            if (strictCommands.includes(cmd as Command)) {
+            if (strictedCommands.includes(cmd as Command)) {
               THROTTLE += 15;
             }
 
@@ -113,7 +113,7 @@ async function main() {
       if (!(message in commandManager)) return;
 
       const cmd = message as Command;
-      if (strictCommands.includes(cmd)) {
+      if (strictedCommands.includes(cmd)) {
         THROTTLE += 15;
       }
 
