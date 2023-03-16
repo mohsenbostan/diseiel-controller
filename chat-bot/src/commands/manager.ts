@@ -58,9 +58,13 @@ export const commandManager = {
   "+ga-gun3": gameGun3Cmd,
   "+ga-reload": gameReloadCmd,
   "-sy-logout": systemLogoutCmd,
+  "+sy-pause": systemPauseCmd,
 } as const satisfies Record<string, () => void | Promise<void>>;
 
 export type ChannelPointCommand = `-${string}`;
 export type Command = Exclude<keyof typeof commandManager, ChannelPointCommand>;
 
 export const isChannelPoint = (cmd: string) => cmd.charAt(0) === "-";
+function systemPauseCmd(): void | Promise<void> {
+  throw new Error("Function not implemented.");
+}
