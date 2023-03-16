@@ -19,6 +19,7 @@ import {
   keyboardGCmd,
   keyboardQCmd,
   keyboardSpaceCmd,
+  keyboardVCmd,
   keyboardXCmd,
   keyboardYCmd,
 } from "~/commands/keyboard";
@@ -40,6 +41,7 @@ export const commandManager = {
   "+kb-e": keyboardECmd,
   "+kb-x": keyboardXCmd,
   "+kb-c": keyboardCCmd,
+  "+kb-v": keyboardVCmd,
   "+kb-q": keyboardQCmd,
   "+kb-y": keyboardYCmd,
   "+kb-g": keyboardGCmd,
