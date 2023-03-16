@@ -59,6 +59,7 @@ export const keyboardAltF4Cmd = async (): Promise<void> => {
   Logger.log("KEYBOARD: ALT+F4");
   robot.keyToggle("alt", "down");
   robot.keyTap("f4");
+  robot.keyTap("enter");
 
   setTimeout(() => {
     robot.keyToggle("alt", "up");
