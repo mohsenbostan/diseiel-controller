@@ -34,6 +34,7 @@ async function main() {
   // State
   const usageMap = new Map<string, number>();
   const strictedCommands: Command[] = ["+kb-alt", "+ga-chat", "+au-troll"];
+  let isActive = true;
 
   const twitchClient = new tmi.Client({
     channels: config.TWITCH_CHANNELS.split(","),
@@ -44,9 +45,26 @@ async function main() {
 
   twitchClient.on("message", async (channel, tags, message) => {
     if (
-      tags.username === channel.replace("#", "") ||
-      tags.mod ||
-      tags.subscriber
+      message.indexOf("#enable") &&
+      (tags.mod || tags.username === channel.replace("#", ""))
+    ) {
+      Logger.error("BOT ENABLED");
+      isActive = true;
+    }
+
+    if (
+      message.indexOf("#disable") &&
+      (tags.mod || tags.username === channel.replace("#", ""))
+    ) {
+      Logger.error("BOT DISABLED");
+      isActive = false;
+    }
+
+    if (
+      (tags.username === channel.replace("#", "") ||
+        tags.mod ||
+        tags.subscriber) &&
+      isActive
     ) {
       if (isChannelPoint(message)) return;
 
