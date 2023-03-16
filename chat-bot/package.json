@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsup src/main.ts",
     "start": "node dist/main.mjs",
-    "pull": "git pull && yarn && yarn build && yarn start",
+    "watch": "nodemon --watch dist/main.mjs",
+    "pull": "git pull && yarn && yarn build",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\""
   },
@@ -22,6 +23,7 @@
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.21",
     "prettier": "^2.8.3",
     "tsup": "^6.6.3",
     "typescript": "^4.9.5"

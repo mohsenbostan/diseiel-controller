@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/homelessdev/.nvm/versions/node/v19.5.0/bin/node /Users/homelessdev/.yarn/bin/yarn.js lint
+  /Users/homelessdev/.nvm/versions/node/v19.5.0/bin/node /Users/homelessdev/.yarn/bin/yarn.js add -D nodemon
 
 PATH: 
   /Users/homelessdev/.nvm/versions/node/v19.5.0/bin:/Users/homelessdev/Library/pnpm:/Users/homelessdev/.yarn/bin:/Users/homelessdev/.config/yarn/global/node_modules/.bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/homelessdev/.cargo/bin:/Users/homelessdev/Library/Application Support/JetBrains/Toolbox/scripts
@@ -14,7 +14,7 @@ Platform:
   darwin arm64
 
 Trace: 
-  SyntaxError: /Users/homelessdev/Desktop/disiel-controller/chat-bot/package.json: Bad control character in string literal in JSON at position 331
+  SyntaxError: /Users/homelessdev/Desktop/disiel-controller/chat-bot/package.json: Expected ',' or '}' after property value in JSON at position 223
       at JSON.parse (<anonymous>)
       at /Users/homelessdev/.yarn/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -30,15 +30,17 @@ npm manifest:
     "scripts": {
       "build": "tsup src/main.ts",
       "start": "node dist/main.mjs",
+      "watch": "node dist/main.mjs --watch"
       "pull": "git pull && yarn && yarn build && yarn start",
-      "lint": "eslint \"{src}/**/*.ts\" --fix",
-      "format": "prettier --write \"src/**/*.ts\" 
+      "lint": "eslint \"src/**/*.ts\" --fix",
+      "format": "prettier --write \"src/**/*.ts\""
     },
     "keywords": [],
     "author": "",
     "license": "MIT",
     "devDependencies": {
       "@types/node": "^18.13.0",
+      "@types/play-sound": "^1.1.0",
       "@types/tmi.js": "^1.8.3",
       "@typescript-eslint/eslint-plugin": "^5.48.2",
       "@typescript-eslint/parser": "^5.48.2",
@@ -55,6 +57,8 @@ npm manifest:
       "chalk": "4.1.2",
       "dotenv": "^16.0.3",
       "node-audio-volume-mixer": "^1.0.3",
+      "open": "^8.4.2",
+      "play-sound": "^1.1.5",
       "robotjs": "^0.6.0",
       "tmi.js": "^1.8.5",
       "zod": "^3.20.6",
@@ -374,6 +378,13 @@ Lockfile:
     version "16.18.12"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.12.tgz#e3bfea80e31523fde4292a6118f19ffa24fd6f65"
     integrity sha512-vzLe5NaNMjIE3mcddFVGlAXN1LEWueUsMsOJWaT6wWMJGyljHAWHznqfnKUQWGzu7TLPrGvWdNAsvQYW+C0xtw==
+  
+  "@types/play-sound@^1.1.0":
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/@types/play-sound/-/play-sound-1.1.0.tgz#fc60ea73d09100df7ccd2e54707edcebc6546289"
+    integrity sha512-v+ggBleNpLah+RDTuyFsYjBGnAwULcJD2mjdP/X4ICsu3HPcOmCktZnfgwQ9UECS+01d5MCm1+YYip2R/iIX0g==
+    dependencies:
+      "@types/node" "*"
   
   "@types/ps-tree@^1.1.2":
     version "1.1.2"
@@ -743,6 +754,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.4.tgz#a6f2dce612fadd2ef1f519b73551f17e85199831"
     integrity sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==
   
+  define-lazy-prop@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz#3f7ae421129bcaaac9bc74905c98a0009ec9ee7f"
+    integrity sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==
+  
   delayed-stream@~1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
@@ -1053,6 +1069,11 @@ Lockfile:
     dependencies:
       to-regex-range "^5.0.1"
   
+  find-exec@1.0.2:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/find-exec/-/find-exec-1.0.2.tgz#dd90e77ef50ab380bdb2f6cc508a386606f3d3bd"
+    integrity sha512-/cs763F5i7Nm/aG+hjBv2nJB/Bl2w0tnuZd5bbfcV+WYapn8T4ez3B87H6MgvsmdheDkitj/rHi557wvE+XylQ==
+  
   find-up@^5.0.0:
     version "5.0.0"
     resolved "https://registry.yarnpkg.com/find-up/-/find-up-5.0.0.tgz#4c92819ecb7083561e4f4a240a86be5198f536fc"
@@ -1284,6 +1305,11 @@ Lockfile:
     dependencies:
       binary-extensions "^2.0.0"
   
+  is-docker@^2.0.0, is-docker@^2.1.1:
+    version "2.2.1"
+    resolved "https://registry.yarnpkg.com/is-docker/-/is-docker-2.2.1.tgz#33eeabe23cfe86f14bde4408a02c0cfb853acdaa"
+    integrity sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==
+  
   is-extglob@^2.1.1:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
@@ -1322,6 +1348,13 @@ Lockfile:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-2.0.1.tgz#fac1e3d53b97ad5a9d0ae9cef2389f5810a5c077"
     integrity sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==
+  
+  is-wsl@^2.2.0:
+    version "2.2.0"
+    resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-2.2.0.tgz#74a4c76e77ca9fd3f932f290c17ea326cd157271"
+    integrity sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==
+    dependencies:
+      is-docker "^2.0.0"
   
   isarray@~1.0.0:
     version "1.0.0"
@@ -1608,6 +1641,15 @@ Lockfile:
     dependencies:
       mimic-fn "^2.1.0"
   
+  open@^8.4.2:
+    version "8.4.2"
+    resolved "https://registry.yarnpkg.com/open/-/open-8.4.2.tgz#5b5ffe2a8f793dcd2aad73e550cb87b59cb084f9"
+    integrity sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==
+    dependencies:
+      define-lazy-prop "^2.0.0"
+      is-docker "^2.1.1"
+      is-wsl "^2.2.0"
+  
   optionator@^0.9.1:
     version "0.9.1"
     resolved "https://registry.yarnpkg.com/optionator/-/optionator-0.9.1.tgz#4f236a6373dae0566a6d43e1326674f50c291499"
@@ -1677,6 +1719,13 @@ Lockfile:
     version "4.0.5"
     resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
     integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
+  
+  play-sound@^1.1.5:
+    version "1.1.5"
+    resolved "https://registry.yarnpkg.com/play-sound/-/play-sound-1.1.5.tgz#5b44aa0ed59e2ec2f80710210ed783c79b6fb854"
+    integrity sha512-gbdF1iLNyL5r9Ne9YwARGMkrvfR4EL9G1ZLtFPLkI2tQt0kkHw5CHM5E6Gl/lDuuk/Uj/O5Q29Bi08jMK4egbA==
+    dependencies:
+      find-exec "1.0.2"
   
   postcss-load-config@^3.0.1:
     version "3.1.4"
