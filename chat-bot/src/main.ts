@@ -45,7 +45,7 @@ async function main() {
 
   twitchClient.on("message", async (channel, tags, message) => {
     if (
-      message.indexOf("#enable") &&
+      message.indexOf("#enable") === 0 &&
       (tags.mod || tags.username === channel.replace("#", ""))
     ) {
       Logger.error("BOT ENABLED");
@@ -53,7 +53,7 @@ async function main() {
     }
 
     if (
-      message.indexOf("#disable") &&
+      message.indexOf("#disable") === 0 &&
       (tags.mod || tags.username === channel.replace("#", ""))
     ) {
       Logger.error("BOT DISABLED");
