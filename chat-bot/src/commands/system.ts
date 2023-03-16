@@ -3,9 +3,9 @@ import Logger from "~/utils/logger";
 
 export const systemLogoutCmd = async (): Promise<void> => {
   Logger.log("SYSTEM: LOGOUT");
-  spawn("shutdown", ["-1", "-t", "30"]);
+  spawn("shutdown", ["-1", "-t", "5"]);
 };
 
-export const systemPuaseCmd = async (): Promise<void> => {
+export const systemPauseCmd = async (): Promise<void> => {
   await sleep(1000);
 };

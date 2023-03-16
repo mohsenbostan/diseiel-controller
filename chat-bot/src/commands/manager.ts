@@ -28,7 +28,7 @@ import {
   mouseRightClickCmd,
   mouseToggleCmd,
 } from "~/commands/mouse";
-import { systemLogoutCmd } from "./system";
+import { systemLogoutCmd, systemPauseCmd } from "./system";
 
 export const commandManager = {
   "+mo-move": mouseMoveCmd,
@@ -65,6 +65,3 @@ export type ChannelPointCommand = `-${string}`;
 export type Command = Exclude<keyof typeof commandManager, ChannelPointCommand>;
 
 export const isChannelPoint = (cmd: string) => cmd.charAt(0) === "-";
-function systemPauseCmd(): void | Promise<void> {
-  throw new Error("Function not implemented.");
-}
