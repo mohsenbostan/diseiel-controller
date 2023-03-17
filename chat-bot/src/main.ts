@@ -10,10 +10,7 @@ import { addAlias, getAlias } from "./db";
 
 setInterval(async () => {
   const hasChanged = await $`git pull`;
-  if (!hasChanged.stdout.includes("Already up to date.")) {
-    await $`yarn pull`;
-    process.exit(0);
-  }
+  if (!hasChanged.stdout.includes("Already up to date.")) await $`yarn pull`;
 }, 10000);
 
 async function main() {

@@ -7,7 +7,7 @@
     "build": "tsup src/main.ts",
     "start": "node dist/main.mjs",
     "watch": "nodemon --watch dist/main.mjs",
-    "pull": "git pull && yarn && yarn build",
+    "pull": "yarn && yarn build",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\""
   },
