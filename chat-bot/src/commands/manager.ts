@@ -51,7 +51,7 @@ export const commandManager = {
   "+au-troll": audioTrollCmd,
   "-au-mute": audioMuteCmd,
   "-au-max": audioMaxCmd,
-  "+ga-map": gameMapCmd,
+  "-ga-map": gameMapCmd,
   "+ga-tab": gameTabCmd,
   "-ga-chat": gameChatCmd,
   "+ga-prone": gameProneCmd,
