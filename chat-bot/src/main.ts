@@ -79,7 +79,7 @@ async function main() {
             name.charAt(0) === "#" &&
             name !== "#add-als" &&
             name.charAt(1) === channel.charAt(1) &&
-            alias.length <= 4
+            alias.length <= 9
           ) {
             await addAlias({
               channel,
