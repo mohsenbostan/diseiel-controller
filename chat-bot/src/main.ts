@@ -90,7 +90,7 @@ async function main() {
         }
       }
 
-      let THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 35;
+      let THROTTLE = tags.username?.toLowerCase() === "homelessdev" ? 0 : 0;
 
       let cmdChain: Command[] | undefined = [];
 
