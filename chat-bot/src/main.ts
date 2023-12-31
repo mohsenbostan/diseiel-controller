@@ -81,6 +81,11 @@ async function main() {
             name.charAt(1) === channel.charAt(1) &&
             alias.length <= 10
           ) {
+            Logger.info(
+              `New Alias Has Been Created: @${channel} / ${name} / ${alias.join(
+                "|",
+              )}`,
+            );
             await addAlias({
               channel,
               name,

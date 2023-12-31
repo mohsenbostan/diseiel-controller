@@ -30,6 +30,7 @@ export async function getAlias(
     await fs.stat("db");
   } catch (err) {
     await fs.writeFile("db", "");
+    return;
   }
 
   const data = (
