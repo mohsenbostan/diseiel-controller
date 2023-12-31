@@ -79,7 +79,7 @@ async function main() {
             name.charAt(0) === "#" &&
             name !== "#add-als" &&
             name.charAt(1) === channel.charAt(1) &&
-            alias.length <= 9
+            alias.length <= 10
           ) {
             await addAlias({
               channel,
@@ -99,7 +99,7 @@ async function main() {
       } else {
         cmdChain = message
           .split("|")
-          .slice(0, 4)
+          .slice(0, 10)
           .map((x) => x.trim()) as Command[];
       }
 
